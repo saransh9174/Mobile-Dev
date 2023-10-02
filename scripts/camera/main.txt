@@ -1,0 +1,43 @@
+package com.example.cameraapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+    ImageView imageView;
+    Button photo, video;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+        photo = findViewById(R.id.photoButton);
+        video = findViewById(R.id.videoButton);
+
+        imageView.setImageResource(R.drawable.camera_icon);
+
+        photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, PhotoActivity.class);
+                startActivity(i);
+            }
+        });
+
+        video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, VideoActivity.class);
+                startActivity(i);
+            }
+        });
+    }
+}
